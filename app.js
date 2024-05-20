@@ -19,7 +19,7 @@ const vagaRoute = require('./routes/vagaRoute');
 const userVisitanteRoute = require('./routes/userVisitanteRoute');
 
 
-app.set('port', process.env.PORT||8080);
+app.set('port', process.env.PORT || 10000);
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');

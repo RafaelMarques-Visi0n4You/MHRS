@@ -50,6 +50,11 @@ app.use('/reembolsos', reembolsosRoute);
 app.use('/vaga', vagaRoute);
 app.use('/userVisitante', userVisitanteRoute);
 
+//Verifar se esta OK
+app.get('/check', (req, res) => {
+  res.status(200).send({ message: "Wecolme to MHRS API" });
+});
+
 app.listen(app.get('port'), () => {
     console.log("Start server on port " + app.get('port'));
 })

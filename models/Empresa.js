@@ -12,7 +12,9 @@ var Empresa = SequelizeDB.define('empresa', {
     email_empresa: Sequelize.CHAR(256),
 },
 {
+    tableName: 'EMPRESA',
     timestamps: false,
+    freezeTableName: true
 });
 
 Empresa.sync();

@@ -6,24 +6,27 @@ const controllers = {};
 sequelize.sync();
 
 controllers.visitas_adicionar = async(req, res) => {
-    const { tipo_publicacao, descricao } = req.body;
-    const data = await Visita.create({
+    const { titulo_publicacao, local_visita, data_visita, duracao_visita, motivo_visita, tipo_publicacao, descricao, id_user} = req.body;
+    const imagem = req.file ? req.file.path : null;
+    const data = await Blog.create({
         tipo_publicacao: tipo_publicacao,
         descricao: descricao,
+        imagem: imagem,
+        titulo_publicacao: titulo_publicacao,
+        local_visita: local_visita,
+        data_visita: data_visita,
+        duracao_visita: duracao_visita,
+        motivo_visita: motivo_visita,
+        id_user: id_user,
     })
     .then(function(data) {
-        return data
+        return data;
     })
     .catch(error => {
         return error;
-    })
-  
-    res.status(200).json({
-        success: true,
-        message: "Visita adicionada com sucesso!",
-        data: data
     });
-  }
+    res.json({success: true, data: data});
+}
 
 controllers.visitas_detalhes = async (req, res) => {
     const { id_visita } = req.body;

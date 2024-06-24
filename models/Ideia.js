@@ -1,11 +1,35 @@
 const Sequelize = require('sequelize');
 const SequelizeDB = require('./database');
+const User = require('./User');
+const Empresa = require('./Empresa');
+const Projetos = require('./Projetos');
 
 var Ideia = SequelizeDB.define('ideia', {
     id_ideia: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
+    },
+    id_empresa:{
+        type:Sequelize.INTEGER,
+        references:{
+            model: Empresa,
+            key: 'id_empresa'
+        }
+    },
+    id_user:{
+        type:Sequelize.INTEGER,
+        references:{
+            model: User,
+            key: 'id_user'
+        }
+    },
+    id_projeto:{
+        type:Sequelize.INTEGER,
+        references:{
+            model: Projetos,
+            key: 'id_projeto'
+        }
     },
     titulo_ideia: Sequelize.CHAR(256),
     descricao: Sequelize.TEXT,
@@ -16,7 +40,9 @@ var Ideia = SequelizeDB.define('ideia', {
     comentarios: Sequelize.TEXT,
 },
 {
+    tableName: 'IDEIA',
     timestamps: false,
+    freezeTableName: true
 });
 
 Ideia.sync();

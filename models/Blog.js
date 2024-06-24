@@ -13,7 +13,9 @@ var Blog = SequelizeDB.define('blog', {
     data_validacao: Sequelize.DATE,
 },
 {
+    tableName: 'BLOG',
     timestamps: false,
+    freezeTableName: true
 });
 
 Blog.sync();

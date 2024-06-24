@@ -77,7 +77,7 @@ controllers.vaga_atualizar = async (req, res) => {
 controllers.vaga_detalhes = async (req, res) => {
     const { id_vaga } = req.params;
     
-    const data = await Vagas.findOne({where: { id_vaga: id_vaga }})
+    const data = await Vagas.findAll({where: { id_vaga: id_vaga }})
     .then(function(data) {
         return data;
     })

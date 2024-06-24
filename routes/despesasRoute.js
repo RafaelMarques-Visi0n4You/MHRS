@@ -4,7 +4,7 @@ const router = express.Router();
 
 const despesasController = require('../controllers/despesasController');
 
-router.get('/list', despesasController.despesas_lista);
+router.get('/list', despesasController.despesas_lista_user);
 router.post('/create', despesasController.despesas_adicionar);
 router.put('/delete', despesasController.despesas_apagar);
 router.post('/update', despesasController.despesas_editar);

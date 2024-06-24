@@ -16,5 +16,4 @@ controllers.publicacoes_lista = async (req, res) => {
     res.json({success: true, data: data});
 }
 
-
 module.exports = controllers;

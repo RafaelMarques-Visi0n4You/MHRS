@@ -6,21 +6,19 @@ const controllers = {};
 sequelize.sync();
 
 controllers.projetos_lista = async (req, res) => {
-    const userId = req.query.userId;
-
-    try {
-      const projetos = await Projetos.findAll({ where: { id_user: userId } });
-  
-      res.json({ success: true, data: projetos });
-    } catch (error) {
-      res.status(500).json({ success: false, message: error.message });
-    }
+    const data = await Projetos.findAll()
+    .then(function(data) {
+        return data;
+    })
+    .catch(error => {
+        return error;
+    });
+    res.json({success: true, data: data});
 }
 
 controllers.projetos_adicionar = async (req, res) => {
-    const {id_user, titulo_projeto, descricao, objetivos, data_inicio, data_final_prevista} = req.body;
+    const {titulo_projeto, descricao, objetivos, data_inicio, data_final_prevista} = req.body;
     const data = await Projetos.create({
-        id_user: id_user,
         titulo_projeto: titulo_projeto,
         descricao: descricao,
         objetivos: objetivos,
